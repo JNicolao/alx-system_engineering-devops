@@ -1,1 +1,1 @@
-This repo is for the shell project
+This directory is for the shell project on system engineering.
