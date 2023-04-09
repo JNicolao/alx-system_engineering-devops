@@ -1,0 +1,4 @@
+# This is the ssh client system-wide configuration file.
+Host 34.138.109.1
+    IdentityFile ~/.ssh/school
+    Protocol 2
