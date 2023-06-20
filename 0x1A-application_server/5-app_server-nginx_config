@@ -1,9 +1,9 @@
 server {
 	listen 80 default_server;
 	listen [::]:80 ipv6only=on default_server;
-	server_name localhost;
+	server_name localhost 35.231.33.237;
 
-	root /var/www/html;
+	root /home/ubuntu/AirBnB_clone_v4/web_dynamic;
 
 	location /hbnb_static/ {
 		alias /data/web_static/current/;
@@ -25,8 +25,22 @@ server {
                 proxy_pass http://0.0.0.0:5000/airbnb-onepage/;
         }
 
+	location /airbnb-dynamic/number_odd_or_even/ {
+		include proxy_params;
+		proxy_pass http://0.0.0.0:5001/number_odd_or_even/;
+	}
+
+	location /static {
+        }
+
+	location /api/ {
+		include proxy_params;
+		proxy_pass http://0.0.0.0:5002/api/;
+	}
+
 	location / {
-		try_files $uri $uri/ =404;
+		include proxy_params;
+		proxy_pass http://0.0.0.0:5003/2-hbnb/;
 	}
 
 }
